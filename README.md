@@ -2,7 +2,7 @@
 
 Projeto de API em Java para simulação de um sistema bancário, com armazenamento de usuários, transferência, saque e depósito.
 
-## 🚀 Como Iniciar o Projeto
+## Como Iniciar o Projeto
 
 ### Pré-requisitos
 - Java 17 ou superior instalado
@@ -26,7 +26,7 @@ Projeto de API em Java para simulação de um sistema bancário, com armazenamen
 
 4. **Pronto!** A API está rodando em: `http://localhost:8081`
 
-## 🧪 Testar a API
+## Teste simples do funcionamento da api
 
 ### Opção 1: Navegador
 Abra no navegador:
@@ -63,18 +63,9 @@ Content-Type: application/json
 }
 ```
 
-## 📋 Endpoints Disponíveis
+##  Endpoints Disponíveis
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/api/contas` | Listar todas as contas |
-| GET | `/api/contas/{id}` | Buscar conta por ID |
-| POST | `/api/contas` | Criar nova conta |
-| PUT | `/api/contas/{id}` | Atualizar conta |
-| DELETE | `/api/contas/{id}` | Deletar conta |
-| POST | `/api/contas/{id}/deposito` | Fazer depósito |
-| POST | `/api/contas/{id}/saque` | Fazer saque |
-| POST | `/api/contas/transferencia` | Transferir entre contas |
+GET http://localhost:8081/api/endpoints
 
 ## 💾 Banco de Dados
 
@@ -85,7 +76,3 @@ Para acessar o console do banco:
 2. JDBC URL: `jdbc:h2:mem:testdb`
 3. Usuário: `sa`
 4. Senha: (deixe em branco)
-
-## ⚠️ Observação
-
-Os dados são armazenados apenas enquanto a aplicação está rodando. Ao fechar, os dados são perdidos (banco em memória).
