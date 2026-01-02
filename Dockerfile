@@ -22,18 +22,24 @@ WORKDIR /app
 
 # Criar usuário não-root
 RUN addgroup -S spring && adduser -S spring -G spring
-USER spring:spring
+
+# Instalar curl para healthcheck
+RUN apk add --no-cache curl
+
+# Criar diretório para dados do banco e dar permissões
+RUN mkdir -p /app/data && chown -R spring:spring /app
 
 # Copiar JAR do build stage
 COPY --from=build /app/target/demo-*.jar app.jar
 
+# Dar permissão ao JAR
+RUN chown spring:spring app.jar
+
+# Mudar para usuário spring
+USER spring:spring
+
 # Expor porta
 EXPOSE 8080
-
-# Instalar curl para healthcheck
-USER root
-RUN apk add --no-cache curl
-USER spring:spring
 
 # Variáveis de ambiente padrão
 ENV SPRING_PROFILES_ACTIVE=production
