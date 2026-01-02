@@ -62,6 +62,18 @@ public class ContaService {
     }
     
     @Transactional
+    public void deletarPorCpf(String cpf) {
+        Conta conta = contaRepository.findByCpf(cpf)
+            .orElseThrow(() -> new RuntimeException("Conta não encontrada com este CPF"));
+        contaRepository.delete(conta);
+    }
+    
+    @Transactional
+    public void deletarTodas() {
+        contaRepository.deleteAll();
+    }
+    
+    @Transactional
     public Conta depositar(Long id, Double valor) {
         if (valor <= 0) {
             throw new RuntimeException("Valor do depósito deve ser maior que zero");

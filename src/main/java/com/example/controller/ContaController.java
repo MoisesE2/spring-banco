@@ -69,18 +69,50 @@ public class ContaController {
         }
     }
     
-    // DELETE /api/contas/{id} - Deletar conta
+    // DELETE /api/contas/{id} - Deletar conta por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletar(@PathVariable Long id) {
         try {
             contaService.deletar(id);
             Map<String, String> resposta = new HashMap<>();
             resposta.put("mensagem", "Conta deletada com sucesso");
+            resposta.put("id", id.toString());
             return ResponseEntity.ok(resposta);
         } catch (RuntimeException e) {
             Map<String, String> erro = new HashMap<>();
             erro.put("mensagem", e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
+        }
+    }
+    
+    // DELETE /api/contas/cpf/{cpf} - Deletar conta por CPF
+    @DeleteMapping("/cpf/{cpf}")
+    public ResponseEntity<?> deletarPorCpf(@PathVariable String cpf) {
+        try {
+            contaService.deletarPorCpf(cpf);
+            Map<String, String> resposta = new HashMap<>();
+            resposta.put("mensagem", "Conta deletada com sucesso");
+            resposta.put("cpf", cpf);
+            return ResponseEntity.ok(resposta);
+        } catch (RuntimeException e) {
+            Map<String, String> erro = new HashMap<>();
+            erro.put("mensagem", e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
+        }
+    }
+    
+    // DELETE /api/contas - Deletar todas as contas
+    @DeleteMapping
+    public ResponseEntity<?> deletarTodas() {
+        try {
+            contaService.deletarTodas();
+            Map<String, String> resposta = new HashMap<>();
+            resposta.put("mensagem", "Todas as contas foram deletadas com sucesso");
+            return ResponseEntity.ok(resposta);
+        } catch (RuntimeException e) {
+            Map<String, String> erro = new HashMap<>();
+            erro.put("mensagem", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
         }
     }
     

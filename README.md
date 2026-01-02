@@ -69,10 +69,12 @@ GET http://localhost:8081/api/endpoints
 
 ## Banco de Dados
 
-O projeto usa **H2 Database** (banco em memória).
+O projeto usa **H2 Database** (banco em arquivo - dados persistem após reiniciar).
+
+Os dados são salvos na pasta `data/` do projeto e **não são perdidos** ao fechar a aplicação.
 
 Para acessar o console do banco:
 1. Acesse: `http://localhost:8081/h2-console`
-2. JDBC URL: `jdbc:h2:mem:testdb`
+2. JDBC URL: `jdbc:h2:file:./data/banco`
 3. Usuário: `sa`
 4. Senha: (deixe em branco)

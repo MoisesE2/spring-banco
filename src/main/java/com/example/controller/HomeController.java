@@ -81,8 +81,20 @@ public class HomeController {
         Map<String, String> endpoint8 = new HashMap<>();
         endpoint8.put("metodo", "DELETE");
         endpoint8.put("url", "/api/contas/{id}");
-        endpoint8.put("descricao", "Deletar conta");
+        endpoint8.put("descricao", "Deletar conta por ID");
         endpoints.add(endpoint8);
+        
+        Map<String, String> endpoint8b = new HashMap<>();
+        endpoint8b.put("metodo", "DELETE");
+        endpoint8b.put("url", "/api/contas/cpf/{cpf}");
+        endpoint8b.put("descricao", "Deletar conta por CPF");
+        endpoints.add(endpoint8b);
+        
+        Map<String, String> endpoint8c = new HashMap<>();
+        endpoint8c.put("metodo", "DELETE");
+        endpoint8c.put("url", "/api/contas");
+        endpoint8c.put("descricao", "Deletar todas as contas");
+        endpoints.add(endpoint8c);
         
         // Endpoints de operações bancárias
         Map<String, String> endpoint9 = new HashMap<>();
