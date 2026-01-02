@@ -35,6 +35,16 @@ USER root
 RUN apk add --no-cache curl
 USER spring:spring
 
+# Variáveis de ambiente padrão
+ENV SPRING_PROFILES_ACTIVE=production
+ENV SERVER_PORT=8080
+ENV SPRING_DATASOURCE_URL=jdbc:h2:file:/app/data/banco
+ENV SPRING_DATASOURCE_USERNAME=sa
+ENV SPRING_DATASOURCE_PASSWORD=
+ENV SPRING_H2_CONSOLE_ENABLED=false
+ENV SPRING_JPA_SHOW_SQL=false
+ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
   CMD curl -f http://localhost:8080/api/status || exit 1
