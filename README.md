@@ -67,7 +67,7 @@ Content-Type: application/json
 
 GET http://localhost:8081/api/endpoints
 
-## 💾 Banco de Dados
+## Banco de Dados
 
 O projeto usa **H2 Database** (banco em memória).
 
